@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div><a class="btn btn-primary" href="/add">Add a new customer</a></div>
+    <br />
+    <br />
+    <table style="border:1px solid gray;padding: 5px">
+        <thead>
+            <tr style="border:1px solid gray;padding: 5px">
+                <th style="padding: 10px">customer name</th>
+                <th style="padding: 10px">customer id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Customers)
+            {
+                <tr style="border:1px solid gray;padding: 5px" onclick="location.href = 'ShowProfile?id=@item.id'">                    
+                    <td style="padding: 5px;cursor:pointer" title="CLICK for more information">@item.name</td>
+                    <td style="padding: 5px;cursor:pointer" title="CLICK for more information">@item.customerNumber</td>
+                    <td style="padding: 15px">
+
+                        <a style="padding-right:5px" class="btn btn-primary" href="/edit?id=@item.id">edit customer</a>
+                        <a style="padding-right:5px" class="btn btn-primary" href="/contact?id=@item.id">add contact</a>
+                        <a style="padding-right:5px" class="btn btn-primary" href="/address?id=@item.id">add address</a>
+                        <a class="btn btn-primary" href="/delete?id=@item.id">remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

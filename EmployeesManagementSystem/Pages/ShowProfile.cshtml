@@ -1,0 +1,57 @@
+﻿@page
+@model EmployeesManagementSystem.Pages.ShowProfileModel
+@{
+    ViewData["Title"] = "ShowProfile";
+}
+
+<h1>Selected Customer Information</h1>
+<div>
+    <b style="padding-right:5px">Customer name: </b><span>@Model.selectedCustomer.name</span>
+    <br />
+    <b style="padding-right:5px">Customer number: </b><span>@Model.selectedCustomer.customerNumber</span>
+    <br />
+    <h3>Addresses</h3>
+    <div>
+        @if (Model.selectedCustomer.addressCount == 0)
+        {
+            <span>No Addresses</span>
+        }
+        else
+        {
+            foreach (var item in Model.selectedCustomer.addresses)
+            {
+                <div style="padding:5px">
+                    <b style="padding-right:5px">City: </b><span>@item.city</span>
+                    <br />
+                    <b style="padding-right:5px">Street: </b><span>@item.street</span>
+                </div>
+            }
+        }
+
+    </div>
+    <h3>Contancts</h3>
+    <div>
+        @if (Model.selectedCustomer.contactCount == 0)
+        {
+            <span>No Contancts</span>
+        }
+        else
+        {
+            foreach (var item in Model.selectedCustomer.contacts)
+            {
+                <div style=" padding:5px">
+                    <b style="padding-right:5px">Full Name: </b><span>@item.fullName</span>
+                    <br />
+                    <b style="padding-right:5px">Office Number: </b><span>@item.officeNumber</span>
+                    <br />
+                    <b style="padding-right:5px">Email: </b><span>@item.email</span>
+                </div>
+            }
+        }
+
+    </div>
+    <div class="col-sm-3 d-grid">
+        <a class="btn btn-outline-primary" href="/">Go Back To List</a>
+    </div>
+</div>
+

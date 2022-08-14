@@ -1,0 +1,9 @@
+﻿@page
+@using System.Data.SqlClient
+@{
+    int id = Int32.Parse(Request.Query["id"]);
+    Employees e = new Employees();
+    e.deleteCustomer(id);
+
+    Response.Redirect("Index");
+}
